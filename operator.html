@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiKonnect | Operator Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🌾 KrishiKonnect
+        </div>
+
+        <div class="nav-right">
+            <span>🔔</span>
+            <span>🏢 Centre A</span>
+            <span>Operator</span>
+        </div>
+
+    </nav>
+
+
+    <!-- DASHBOARD -->
+    <main class="dashboard">
+
+        <!-- HEADER -->
+        <section class="welcome">
+
+            <div>
+                <p class="eyebrow">PROCUREMENT CENTRE</p>
+
+                <h1>Operator Dashboard</h1>
+
+                <p>
+                    Manage today's farmer queue, procurement and payments.
+                </p>
+            </div>
+
+            <div class="centre-status">
+                🟢 Centre Operational
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>👥</span>
+                <small>WAITING FARMERS</small>
+                <strong id="waitingCount">18</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>⚙️</span>
+                <small>PROCESSING</small>
+                <strong id="processingCount">1</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>✅</span>
+                <small>COMPLETED TODAY</small>
+                <strong id="completedCount">27</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>💰</span>
+                <small>PAYMENTS PENDING</small>
+                <strong id="paymentCount">8</strong>
+            </div>
+
+        </section>
+
+
+        <!-- QUEUE -->
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>🎫 LIVE QUEUE</span>
+
+                <h2>Today's farmer queue</h2>
+
+                <p>
+                    Process farmers in token order and keep the queue updated.
+                </p>
+
+            </div>
+
+
+            <div class="operator-card">
+
+                <div class="queue-table-header">
+
+                    <span>TOKEN</span>
+                    <span>FARMER</span>
+                    <span>CROP</span>
+                    <span>QUANTITY</span>
+                    <span>STATUS</span>
+                    <span>ACTION</span>
+
+                </div>
+
+
+                <!-- FARMER 46 -->
+                <div class="queue-row">
+
+                    <strong>#46</strong>
+
+                    <span>Ramesh Kumar</span>
+
+                    <span>🌾 Wheat</span>
+
+                    <span>40 Q</span>
+
+                    <span class="status processing">
+                        Processing
+                    </span>
+
+                    <button class="complete-button"
+                            onclick="completeFarmer(this)">
+                        Complete
+                    </button>
+
+                </div>
+
+
+                <!-- FARMER 47 -->
+                <div class="queue-row">
+
+                    <strong>#47</strong>
+
+                    <span>Suresh Singh</span>
+
+                    <span>🌾 Wheat</span>
+
+                    <span>35 Q</span>
+
+                    <span class="status processing">
+                        Processing
+                    </span>
+
+                    <button class="complete-button"
+                            onclick="completeFarmer(this)">
+                        Complete
+                    </button>
+
+                </div>
+
+
+                <!-- FARMER 48 -->
+                <div class="queue-row farmer-highlight">
+
+                    <strong>#48</strong>
+
+                    <span>
+                        You — Farmer
+                    </span>
+
+                    <span>🌾 Wheat</span>
+
+                    <span>50 Q</span>
+
+                    <span class="status waiting">
+                        Waiting
+                    </span>
+
+                    <button class="process-button"
+                            onclick="processFarmer(this)">
+                        Process
+                    </button>
+
+                </div>
+
+
+                <!-- FARMER 49 -->
+                <div class="queue-row">
+
+                    <strong>#49</strong>
+
+                    <span>Mahesh Sharma</span>
+
+                    <span>🌾 Wheat</span>
+
+                    <span>25 Q</span>
+
+                    <span class="status waiting">
+                        Waiting
+                    </span>
+
+                    <button class="process-button"
+                            onclick="processFarmer(this)">
+                        Process
+                    </button>
+
+                </div>
+
+
+                <!-- FARMER 50 -->
+                <div class="queue-row">
+
+                    <strong>#50</strong>
+
+                    <span>Vijay Yadav</span>
+
+                    <span>🌾 Wheat</span>
+
+                    <span>60 Q</span>
+
+                    <span class="status waiting">
+                        Waiting
+                    </span>
+
+                    <button class="process-button"
+                            onclick="processFarmer(this)">
+                        Process
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CURRENT FARMER -->
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>⚖️ CURRENT PROCUREMENT</span>
+
+                <h2>Token #48 — Farmer</h2>
+
+            </div>
+
+
+            <div class="procurement-card">
+
+                <div class="farmer-details">
+
+                    <div>
+                        <small>CROP</small>
+                        <strong>🌾 Wheat</strong>
+                    </div>
+
+                    <div>
+                        <small>QUANTITY</small>
+                        <strong>50 Quintals</strong>
+                    </div>
+
+                    <div>
+                        <small>ESTIMATED VALUE</small>
+                        <strong>₹1,15,000</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="procurement-actions">
+
+                    <button class="verify-button"
+                            onclick="verifyProduce()">
+                        ✓ VERIFY PRODUCE
+                    </button>
+
+                    <button class="weigh-button"
+                            onclick="weighProduce()">
+                        ⚖️ COMPLETE WEIGHING
+                    </button>
+
+                </div>
+
+                <p id="procurementMessage"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAYMENT -->
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>💰 PAYMENT</span>
+
+                <h2>Payment processing</h2>
+
+            </div>
+
+
+            <div class="payment-card">
+
+                <div>
+
+                    <small>FINAL PROCUREMENT VALUE</small>
+
+                    <h2>₹1,11,550</h2>
+
+                    <p id="paymentStatus">
+                        🟡 Payment Pending
+                    </p>
+
+                </div>
+
+                <button class="payment-button"
+                        onclick="processPayment()">
+                    PROCESS PAYMENT
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/script.js"></script>
+
+<script>
+
+function processFarmer(button) {
+
+    const row = button.closest(".queue-row");
+    const token = row.querySelector("strong").innerText;
+
+    const status = row.querySelector(".status");
+
+    status.innerText = "Processing";
+    status.className = "status processing";
+
+    button.innerText = "Processing...";
+    button.disabled = true;
+
+    // Save farmer status
+    localStorage.setItem("farmerStatus", "Processing");
+    localStorage.setItem("farmerToken", token);
+}
+
+
+function completeFarmer(button) {
+
+    const row = button.closest(".queue-row");
+    const status = row.querySelector(".status");
+
+    status.innerText = "Completed";
+    status.className = "status completed";
+
+    button.innerText = "✓ Completed";
+    button.disabled = true;
+
+    const completedCount = document.getElementById("completedCount");
+
+    if (completedCount) {
+        completedCount.innerText =
+            parseInt(completedCount.innerText) + 1;
+    }
+}
+
+
+function verifyProduce() {
+
+    document.getElementById("procurementMessage").innerText =
+        "✓ Produce verified successfully.";
+}
+
+
+function weighProduce() {
+
+    document.getElementById("procurementMessage").innerText =
+        "✓ Weighing completed. Final quantity recorded: 50 Quintals.";
+}
+
+
+function processPayment() {
+
+    const status = document.getElementById("paymentStatus");
+
+    // Payment starts
+    status.innerText = "🔵 Payment Processing...";
+
+    localStorage.setItem("farmerStatus", "Payment Processing");
+
+    // After 2 seconds, payment completes
+    setTimeout(function () {
+
+        status.innerText =
+            "🟢 Payment Completed — ₹1,11,550";
+
+        localStorage.setItem("farmerStatus", "Payment Completed");
+        localStorage.setItem("paymentAmount", "₹1,11,550");
+
+    }, 2000);
+}
+
+</script>
+
+
+</body>
+
+</html>

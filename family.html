@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiKonnect | Family Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🌾 KrishiKonnect
+        </div>
+
+        <div class="nav-right">
+
+            <span>🔔</span>
+
+            <span>👨‍👩‍👧 Family Dashboard</span>
+
+        </div>
+
+    </nav>
+
+
+    <!-- DASHBOARD -->
+
+    <main class="dashboard">
+
+        <!-- HEADER -->
+
+        <section class="welcome">
+
+            <div>
+
+                <p class="eyebrow">
+                    FAMILY MEMBER
+                </p>
+
+              <h1>Hello, <span id="familyMemberNameDisplay">Family Member</span> 👋</h1> 
+
+            </div>
+
+            <div class="centre-status">
+                🟢 Connected
+            </div>
+
+        </section>
+
+</script>
+
+                <p>
+    Stay updated on your
+    <span id="relationshipText">family member's</span>
+    procurement and payment.
+</p>
+
+            </div>
+
+            <div class="centre-status">
+                🟢 Connected
+            </div>
+
+        </section>
+
+
+        <!-- FARMER INFO -->
+
+        <section class="family-farmer-card">
+
+            <div>
+
+                <div class="farmer-info">
+
+    <span id="relationshipLabel">YOUR FAMILY MEMBER'S PROCUREMENT</span>
+
+<h2 id="familyFarmerName">Farmer</h2>
+
+    <p>
+        🌾 Wheat · 50 Quintals
+    </p>
+
+</div>
+            </div>
+
+            <div class="family-token">
+
+                <small>TOKEN</small>
+
+                <strong>
+                    #48
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- CURRENT STATUS -->
+
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>📋 CURRENT STATUS</span>
+
+                <h2>
+                    Procurement journey
+                </h2>
+
+            </div>
+
+
+            <div class="family-status-card">
+
+                <div class="family-status-item active">
+
+                    <span>🎫</span>
+
+                    <div>
+
+                        <small>QUEUE</small>
+
+                        <strong id="familyQueueStatus">
+                            In Queue
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="family-status-item">
+
+                    <span>⚖️</span>
+
+                    <div>
+
+                        <small>PROCUREMENT</small>
+
+                        <strong id="familyProcurementStatus">
+                            Not Started
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="family-status-item">
+
+                    <span>💰</span>
+
+                    <div>
+
+                        <small>PAYMENT</small>
+
+                        <strong id="familyPaymentStatus">
+                            Payment Pending
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PAYMENT CARD -->
+
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>💰 PAYMENT UPDATE</span>
+
+                <h2>
+                    Payment information
+                </h2>
+
+            </div>
+
+
+            <div class="family-payment-card">
+
+                <div>
+
+                    <small>
+                        EXPECTED / FINAL PAYMENT
+                    </small>
+
+                    <h1 id="familyPaymentAmount">
+                        ₹1,11,550
+                    </h1>
+
+                    <p id="familyPaymentMessage">
+                        🟡 Payment Pending
+                    </p>
+
+                </div>
+
+                <div class="payment-icon">
+                    💳
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS -->
+
+        <section class="operator-section">
+
+            <div class="section-heading">
+
+                <span>🔔 NOTIFICATIONS</span>
+
+                <h2>
+                    Recent updates
+                </h2>
+
+            </div>
+
+
+            <div class="family-notifications">
+
+                <div class="family-notification">
+
+                    <span>📍</span>
+
+                    <div>
+
+                        <strong>
+                            Procurement Centre
+                        </strong>
+
+                        <p>
+                            Centre A • 2.4 km away
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="family-notification">
+
+                    <span>🎫</span>
+
+                    <div>
+
+                        <strong>
+                            Token #48 booked
+                        </strong>
+
+                        <p>
+                            Farmer should arrive by 3:45 PM.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="family-notification">
+
+                    <span>💰</span>
+
+                    <div>
+
+                        <strong>
+                            Payment tracking enabled
+                        </strong>
+
+                        <p>
+                            You will be notified when payment is completed.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function updateFamilyDashboard() {
+
+            const status =
+                localStorage.getItem("farmerStatus");
+
+            const queueStatus =
+                document.getElementById("familyQueueStatus");
+
+            const procurementStatus =
+                document.getElementById("familyProcurementStatus");
+
+            const paymentStatus =
+                document.getElementById("familyPaymentStatus");
+
+            const paymentMessage =
+                document.getElementById("familyPaymentMessage");
+
+            if (!status) {
+                return;
+            }
+
+
+            if (status === "Processing") {
+
+                queueStatus.innerText =
+                    "Processing";
+
+                procurementStatus.innerText =
+                    "Produce Being Processed";
+
+            }
+
+
+            else if (status === "Verified") {
+
+                queueStatus.innerText =
+                    "Processing";
+
+                procurementStatus.innerText =
+                    "✓ Produce Verified";
+
+            }
+
+
+            else if (status === "Weighed") {
+
+                queueStatus.innerText =
+                    "Processing";
+
+                procurementStatus.innerText =
+                    "⚖️ Weighing Completed";
+
+            }
+
+
+            else if (status === "Payment Processing") {
+
+                queueStatus.innerText =
+                    "Completed";
+
+                procurementStatus.innerText =
+                    "✓ Procurement Completed";
+
+                paymentStatus.innerText =
+                    "Payment Processing";
+
+                paymentMessage.innerText =
+                    "🔵 Payment Processing";
+
+            }
+
+
+            else if (status === "Payment Completed") {
+
+                queueStatus.innerText =
+                    "Completed";
+
+                procurementStatus.innerText =
+                    "✓ Procurement Completed";
+
+                paymentStatus.innerText =
+                    "✓ Payment Completed";
+
+                paymentMessage.innerText =
+                    "🟢 Payment Completed";
+
+            }
+
+        }
+
+
+        updateFamilyDashboard();
+
+    </script>
+<script>
+
+    // Get saved details
+    const familyMemberName =
+        localStorage.getItem("familyMemberName");
+
+    const farmerName =
+        localStorage.getItem("farmerName");
+
+    const relation =
+        localStorage.getItem("familyRelation");
+
+
+    // Show family member's name
+    if (familyMemberName) {
+
+        const familyNameElement =
+            document.getElementById("familyMemberNameDisplay");
+
+        if (familyNameElement) {
+            familyNameElement.innerText = familyMemberName;
+        }
+    }
+
+
+    // Show farmer's name
+    if (farmerName) {
+
+        const farmerNameElement =
+            document.getElementById("familyFarmerName");
+
+        if (farmerNameElement) {
+            farmerNameElement.innerText = farmerName;
+        }
+    }
+
+
+    // Reverse relationship
+    if (relation) {
+
+        let displayRelationship = "FAMILY MEMBER'S PROCUREMENT";
+
+        if (relation === "Father" || relation === "Mother") {
+            displayRelationship = "DAUGHTER'S PROCUREMENT";
+        }
+
+        else if (relation === "Son" || relation === "Daughter") {
+            displayRelationship = "PARENT'S PROCUREMENT";
+        }
+
+        else if (relation === "Husband") {
+            displayRelationship = "WIFE'S PROCUREMENT";
+        }
+
+        else if (relation === "Wife") {
+            displayRelationship = "HUSBAND'S PROCUREMENT";
+        }
+
+        else if (relation === "Brother") {
+            displayRelationship = "SISTER'S PROCUREMENT";
+        }
+
+        else if (relation === "Sister") {
+            displayRelationship = "BROTHER'S PROCUREMENT";
+        }
+
+        document.getElementById("relationshipLabel").innerText =
+            displayRelationship;
+    }
+    const relationTextMap = {
+    Father: "daughter's",
+    Mother: "daughter's",
+    Son: "parent's",
+    Daughter: "parent's",
+    Husband: "wife's",
+    Wife: "husband's",
+    Brother: "sister's",
+    Sister: "brother's",
+    Other: "family member's"
+};
+
+const relationshipText =
+    document.getElementById("relationshipText");
+
+if (relationshipText) {
+    relationshipText.innerText =
+        relationTextMap[relation] || "family member's";
+}
+
+</script>
+
+</body>
+
+
+</html>
