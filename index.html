@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishiKonnect</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="landing-page">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🌾 <span>KrishiKonnect</span>
+        </div>
+
+        <div class="language-switch">
+            <button onclick="setLandingLanguage('en')" id="landingEnglish">
+                English
+            </button>
+
+            <button onclick="setLandingLanguage('hi')" id="landingHindi">
+                हिंदी
+            </button>
+        </div>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="landing-hero">
+
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                🤖 AI-POWERED AGRICULTURE
+            </span>
+
+            <h1 id="heroTitle">
+                Know Before<br>
+                <span>You Go.</span>
+            </h1>
+
+            <p id="heroDescription">
+                KrishiKonnect helps farmers know when to go,
+                where to go, how long they may wait,
+                and when their payment is coming.
+            </p>
+
+            <button class="hero-button" onclick="showLogin()">
+                GET STARTED →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="landing-features">
+
+        <div class="section-heading">
+
+            <span>WHY KRISHIKONNECT?</span>
+
+            <h2 id="featureTitle">
+                From uncertainty to clarity.
+            </h2>
+
+            <p id="featureDescription">
+                One platform connecting farmers,
+                procurement centres and families.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">🕐</div>
+                <h3>Smart Scheduling</h3>
+                <p>
+                    Know the best time to arrive
+                    before leaving home.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎫</div>
+                <h3>Live Queue</h3>
+                <p>
+                    Track your token and estimated
+                    waiting time.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Payment Tracking</h3>
+                <p>
+                    Know your estimated payment
+                    and its current status.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎙️</div>
+                <h3>Voice Assistance</h3>
+                <p>
+                    Ask questions in your preferred
+                    language using your voice.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOGIN / REGISTER -->
+    <section class="login-section hidden" id="loginSection">
+
+        <div class="login-card">
+
+            <span class="hero-tag">
+                👨‍🌾 FARMER ACCESS
+            </span>
+
+            <h2>Welcome to KrishiKonnect</h2>
+
+            <p>
+                Enter your details to continue to your
+                farmer dashboard.
+            </p>
+
+
+            <div class="input-group">
+
+                <label for="farmerName">
+                    👨‍🌾 Farmer Name
+                </label>
+
+                <input
+                    type="text"
+                    id="farmerName"
+                    placeholder="Enter your name"
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="farmerMobile">
+                    📱 Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="farmerMobile"
+                    placeholder="Enter mobile number"
+                >
+
+            </div>
+
+
+            <button class="hero-button login-button" onclick="farmerLogin()">
+                CONTINUE →
+            </button>
+
+            <p class="demo-note">
+                Demo prototype — no OTP required
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="landing-footer">
+
+        <strong>🌾 KrishiKonnect</strong>
+
+        <p>
+            Know Before You Go.
+        </p>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+    <script>
+
+        function showLogin() {
+
+            const loginSection =
+                document.getElementById("loginSection");
+
+            loginSection.classList.remove("hidden");
+
+            loginSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+
+        function farmerLogin() {
+
+            const name =
+                document.getElementById("farmerName").value.trim();
+
+            const mobile =
+                document.getElementById("farmerMobile").value.trim();
+
+
+            if (name === "" || mobile === "") {
+
+                alert("Please enter your name and mobile number.");
+
+                return;
+            }
+
+
+            localStorage.setItem("farmerName", name);
+            localStorage.setItem("farmerMobile", mobile);
+
+
+            window.location.href = "farmer.html";
+
+        }
+
+
+        function setLandingLanguage(language) {
+
+            if (language === "hi") {
+
+                document.getElementById("heroTitle").innerHTML =
+                    "जाने से पहले<br><span>जानें।</span>";
+
+                document.getElementById("heroDescription").innerText =
+                    "कृषिकनेक्ट किसानों को सही समय, सही केंद्र, प्रतीक्षा समय और भुगतान की जानकारी देता है।";
+
+                document.getElementById("featureTitle").innerText =
+                    "अनिश्चितता से स्पष्टता तक।";
+
+                document.getElementById("featureDescription").innerText =
+                    "किसानों, खरीद केंद्रों और परिवारों को एक मंच से जोड़ना।";
+
+            } else {
+
+                document.getElementById("heroTitle").innerHTML =
+                    "Know Before<br><span>You Go.</span>";
+
+                document.getElementById("heroDescription").innerText =
+                    "KrishiKonnect helps farmers know when to go, where to go, how long they may wait, and when their payment is coming.";
+
+                document.getElementById("featureTitle").innerText =
+                    "From uncertainty to clarity.";
+
+                document.getElementById("featureDescription").innerText =
+                    "One platform connecting farmers, procurement centres and families.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
